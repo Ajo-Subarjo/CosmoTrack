@@ -19,7 +19,7 @@ A simple slackbot space theme build with **Node.js** and **Slack Bolt**.
 
 ```bash
 npm install
-npm start
+npm start or use node index.js if you get error
 ```
 
 Create a `.env` file:
