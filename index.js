@@ -1,8 +1,31 @@
 require("dotenv").config()
 const { App } = require("@slack/bolt");
-
+const express = require("express");
+const axios = require("axios");
 const { getIssTrack } = require("./service/iss.mjs");
 const { getNasaApod } = require("./service/nasa.mjs")
+
+
+const web = express();
+const CLIENT_ID = process.env.SLACK_CLIENT_ID;
+const CLIENT_SECRET = process.env.SLACK_CLIENT_SECRET;
+const REDIRECT_URI = process.env.SLACK_REDIRECT_URI;
+
+web.get("/slack/callback", async (req, res) => {
+  const code = req.query.code;
+  if (!code) return res.send("Error: no code");
+
+  try {
+    const response = await axios.post("https://slack.com/api/oauth.v2.access", null, {
+      params: { client_id: CLIENT_ID, client_secret: CLIENT_SECRET, code, redirect_uri: REDIRECT_URI }
+    });
+    console.log("Bot token:", response.data.access_token);
+    res.send("Bot berhasil diinstall! ✅");
+  } catch (err) {
+    res.send("Error: " + err.message);
+  }
+});
+
 
 
 const app = new App({
@@ -10,10 +33,6 @@ const app = new App({
   appToken: process.env.SLACK_XAPP,
   socketMode: true
 });
-
-
-
-
 
 app.command("/ct-ping", async ({ command, ack, respond }) => {
   const start = Date.now();
@@ -124,5 +143,6 @@ async function sendApodVideo(data, say) {
 
 (async () => {
   await app.start();
+  web.listen(3000, () => console.log("Express running on port 3000"));
   console.log("bot is running!");
 })();
