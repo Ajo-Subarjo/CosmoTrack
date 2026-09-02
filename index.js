@@ -14,13 +14,12 @@ const REDIRECT_URI = process.env.SLACK_REDIRECT_URI;
 web.get("/slack/callback", async (req, res) => {
   const code = req.query.code;
   if (!code) return res.send("Error: no code");
-
   try {
     const response = await axios.post("https://slack.com/api/oauth.v2.access", null, {
       params: { client_id: CLIENT_ID, client_secret: CLIENT_SECRET, code, redirect_uri: REDIRECT_URI }
     });
     console.log("Bot token:", response.data.access_token);
-    res.send("Bot berhasil diinstall! ✅");
+    res.send("Bot Installed yeaa!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
   } catch (err) {
     res.send("Error: " + err.message);
   }
