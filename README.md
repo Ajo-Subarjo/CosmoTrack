@@ -9,8 +9,15 @@ A simple slackbot space theme build with **Node.js** and **Slack Bolt**.
 * `/ct-trackiss` - Get the current ISS position and crew information
 
 
-## Setup 
-if you want self hosting the bot
+### add your to Workspace
+Click the button below to add CosmoTrack to your Slack workspace:
+
+[![Add to Slack](https://platform.slack-edge.com/img/add_to_slack.png)](https://slack.com/oauth/v2/authorize?client_id=11932289980007.11943549521429&scope=app_mentions:read,channels:history,channels:read,chat:write,commands,groups:history,groups:read&redirect_uri=http://cosmo.nest.hackclub.app/slack/callback)
+
+
+
+# Slef Hosting Setup
+If you want hosting it yourself here's the setup
 
 ### 1. Clone the repository
 
