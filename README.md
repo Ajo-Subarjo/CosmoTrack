@@ -1,6 +1,8 @@
 # CosmoTrack
 
-A simple slackbot space theme build with **Node.js** and **Slack Bolt**.
+A simple slackbot space themed build with **Node.js** and **Slack Bolt**.
+i made this bot using node.js and its my first time learning this lenguage and it take a lot of time to just create this simple bot but its ok i learn something. why i made this bot because im trying to learn about integration api in javascript. 
+
 
 ## Features
 
@@ -101,18 +103,5 @@ try use `node index.js` if it get error
 * NASA APOD API
 * Open Notify API
 
-## Project Structure
-
-```text
-CosmoTrack/
-├── index.js
-├── package.json
-├── .env
-└── service/
-    ├── iss.js
-    └── nasa_apod.js
-```
-
 ## License
-
 This project is licensed under the **MIT License**.
